@@ -1,0 +1,26 @@
+version: '3'
+services:
+  tick-tock:
+    image: team-clock/tick-tock
+    ports:
+      - "8080:8080"
+    networks: 
+      - back-tier
+  clock-face:
+    image: team-clock/clock-face
+    ports:
+      - "8081:8080"
+    networks: 
+      - back-tier
+  rest-repository:
+    image: team-clock/rest-repository
+    networks: 
+      - db-tier
+  mongodb:
+    image: mongo
+    networks: 
+      - db-tier
+  
+networks: 
+  back-tier:
+  db-tier:

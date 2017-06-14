@@ -1,16 +1,28 @@
 package com.performgroup.dto;
 
+import java.util.List;
+
 import lombok.Data;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * @author piotr.larysz
  */
 @Data
-@Document
 public class Team {
 
   @Id
   private String id;
+
+  private List<Person> people;
+
+  @Data
+  static class Person {
+
+    private String firstName;
+
+    private String lastName;
+
+    private List<String> duties;
+  }
 }
